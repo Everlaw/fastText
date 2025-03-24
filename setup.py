@@ -194,6 +194,7 @@ setup(
         "Operating System :: Unix",
         "Operating System :: MacOS",
     ],
+    # These requirements are duplicated in `.github/workflows/build_wheel.yml`.
     install_requires=["pybind11>=2.2", "setuptools >= 0.7.0", "numpy"],
     cmdclass={"build_ext": BuildExt},
     packages=[
