@@ -21,7 +21,7 @@ import subprocess
 import platform
 import io
 
-__version__ = "0.9.2"
+__version__ = "0.9.4.rc0"
 FASTTEXT_SRC = "src"
 
 # Based on https://github.com/pybind/python_example
@@ -194,6 +194,7 @@ setup(
         "Operating System :: Unix",
         "Operating System :: MacOS",
     ],
+    # These requirements are duplicated in `.github/workflows/build_wheel.yml`.
     install_requires=["pybind11>=2.2", "setuptools >= 0.7.0", "numpy"],
     cmdclass={"build_ext": BuildExt},
     packages=[

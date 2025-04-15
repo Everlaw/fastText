@@ -1,0 +1,36 @@
+name: build_wheel
+on: [push]
+permissions: read-all
+jobs:
+  build_wheel:
+    strategy:
+      matrix:
+        python-version:
+          - 3.12.6
+    runs-on: [self-hosted, fasttext]
+    steps:
+    - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
+    - name: Install Python
+      run: |
+        uv python install ${{ matrix.python-version }}
+    - name: Create virtual environment
+      run: |
+        rm -rf venv
+        uv venv --python ${{ matrix.python-version }} venv
+        echo "$(pwd)/venv/bin" >> $GITHUB_PATH
+    - name: Build wheel
+      run: |
+        rm -rf dist
+        uv build --out-dir dist
+    - name: Check wheel
+      run: |
+        # These requirements were lifted from `install_requires` in `setup.py`.
+        uv pip install \
+          'pybind11>=2.2' \
+          'setuptools>=0.7.0' \
+          'numpy'
+        uv pip install --no-index --find-links dist fasttext
+        python -c 'import fasttext'
+    - name: Upload wheel
+      run: |
+        ./upload-wheel.sh dist/fasttext*.whl
