@@ -62,7 +62,6 @@ void DenseMatrix::addRowToVector(Vector& x, int32_t i, real a) const {
   }
 }
 
-<<<<<<< HEAD
 /* Abstract over AVX512F, AVX, and SSE intrinsics, using the one available on this machine. */
 #if defined(__AVX512F__)
 using Register = __m512;
@@ -149,21 +148,6 @@ void DenseMatrix::averageRowsToVector(Vector& x, const std::vector<int32_t>& row
   x.mul(1.0 / rows.size());
 }
 
-void DenseMatrix::save(std::ostream& out) const {
-  out.write((char*)&m_, sizeof(int64_t));
-  out.write((char*)&n_, sizeof(int64_t));
-  out.write((char*)data_.data(), m_ * n_ * sizeof(real));
-}
-
-||||||| 3697152
-void DenseMatrix::save(std::ostream& out) const {
-  out.write((char*)&m_, sizeof(int64_t));
-  out.write((char*)&n_, sizeof(int64_t));
-  out.write((char*)data_.data(), m_ * n_ * sizeof(real));
-}
-
-=======
->>>>>>> 93501d1069ecb00758137c19bb27a53ee097a0e4
 void DenseMatrix::load(std::istream& in) {
   in.read((char*)&m_, sizeof(int64_t));
   in.read((char*)&n_, sizeof(int64_t));

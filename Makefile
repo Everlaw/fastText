@@ -7,16 +7,8 @@
 #
 
 CXX = c++
-<<<<<<< HEAD
-CXXFLAGS = -pthread -std=c++17 -march=native
-OBJS = args.o autotune.o matrix.o dictionary.o loss.o productquantizer.o densematrix.o quantmatrix.o vector.o model.o utils.o meter.o fasttext.o
-||||||| 3697152
-CXXFLAGS = -pthread -std=c++11 -march=native
-OBJS = args.o autotune.o matrix.o dictionary.o loss.o productquantizer.o densematrix.o quantmatrix.o vector.o model.o utils.o meter.o fasttext.o
-=======
-CXXFLAGS = -std=c++11 -march=native
+CXXFLAGS = -std=c++17 -march=native
 OBJS = args.o matrix.o dictionary.o loss.o productquantizer.o densematrix.o quantmatrix.o vector.o model.o fasttext.o
->>>>>>> 93501d1069ecb00758137c19bb27a53ee097a0e4
 INCLUDES = -I.
 
 args.o: src/args.cc src/args.h

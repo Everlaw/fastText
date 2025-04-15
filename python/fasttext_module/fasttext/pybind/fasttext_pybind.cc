@@ -55,63 +55,6 @@ std::vector<std::pair<fasttext::real, py::str>> castToPythonString(
   return transformedPredictions;
 }
 
-<<<<<<< HEAD
-std::pair<std::vector<py::str>, std::vector<py::str>> getLineText(
-    fasttext::FastText& m,
-    const std::string text,
-    const char* onUnicodeError) {
-  std::shared_ptr<const fasttext::Dictionary> d = m.getDictionary();
-  std::stringstream ioss(text);
-  std::string token;
-  std::vector<py::str> words;
-  std::vector<py::str> labels;
-  while (d->readWord(ioss, token)) {
-    uint32_t h = d->hash(token);
-    int32_t wid = d->getId(token, h);
-    fasttext::entry_type type = wid < 0 ? d->getType(token) : d->getType(wid);
-
-    if (type == fasttext::entry_type::word) {
-      words.push_back(castToPythonString(token, onUnicodeError));
-      // Labels must not be OOV!
-    } else if (type == fasttext::entry_type::label && wid >= 0) {
-      labels.push_back(castToPythonString(token, onUnicodeError));
-    }
-    if (token == fasttext::Dictionary::EOS) {
-      break;
-}
-  }
-  return std::pair<std::vector<py::str>, std::vector<py::str>>(words, labels);
-}
-
-||||||| 3697152
-std::pair<std::vector<py::str>, std::vector<py::str>> getLineText(
-    fasttext::FastText& m,
-    const std::string text,
-    const char* onUnicodeError) {
-  std::shared_ptr<const fasttext::Dictionary> d = m.getDictionary();
-  std::stringstream ioss(text);
-  std::string token;
-  std::vector<py::str> words;
-  std::vector<py::str> labels;
-  while (d->readWord(ioss, token)) {
-    uint32_t h = d->hash(token);
-    int32_t wid = d->getId(token, h);
-    fasttext::entry_type type = wid < 0 ? d->getType(token) : d->getType(wid);
-
-    if (type == fasttext::entry_type::word) {
-      words.push_back(castToPythonString(token, onUnicodeError));
-      // Labels must not be OOV!
-    } else if (type == fasttext::entry_type::label && wid >= 0) {
-      labels.push_back(castToPythonString(token, onUnicodeError));
-    }
-    if (token == fasttext::Dictionary::EOS)
-      break;
-  }
-  return std::pair<std::vector<py::str>, std::vector<py::str>>(words, labels);
-}
-
-=======
->>>>>>> 93501d1069ecb00758137c19bb27a53ee097a0e4
 PYBIND11_MODULE(fasttext_pybind, m) {
   py::class_<fasttext::FastText>(m, "fasttext")
       .def(py::init<>())

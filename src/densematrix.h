@@ -25,15 +25,7 @@ class Vector;
 
 class DenseMatrix : public Matrix {
  protected:
-<<<<<<< HEAD
   intgemm::AlignedVector<real> data_;
-  void uniformThread(real, int, int32_t);
-||||||| 3697152
-  std::vector<real> data_;
-  void uniformThread(real, int, int32_t);
-=======
-  std::vector<real> data_;
->>>>>>> 93501d1069ecb00758137c19bb27a53ee097a0e4
 
  public:
   DenseMatrix();
@@ -70,13 +62,7 @@ class DenseMatrix : public Matrix {
   real dotRow(const Vector&, int64_t) const override;
   void addRowToVector(Vector& x, int32_t i) const override;
   void addRowToVector(Vector& x, int32_t i, real a) const override;
-<<<<<<< HEAD
   void averageRowsToVector(Vector& x, const std::vector<int32_t>& rows) const override;
-  void save(std::ostream&) const override;
-||||||| 3697152
-  void save(std::ostream&) const override;
-=======
->>>>>>> 93501d1069ecb00758137c19bb27a53ee097a0e4
   void load(std::istream&) override;
 
   class EncounteredNaNError : public std::runtime_error {

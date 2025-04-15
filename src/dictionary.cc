@@ -87,20 +87,6 @@ int32_t Dictionary::getId(const std::string_view w, uint32_t h) const {
   return word2int_[id];
 }
 
-<<<<<<< HEAD
-int32_t Dictionary::getId(const std::string_view w) const {
-  int32_t h = find(w);
-  return word2int_[h];
-}
-
-||||||| 3697152
-int32_t Dictionary::getId(const std::string& w) const {
-  int32_t h = find(w);
-  return word2int_[h];
-}
-
-=======
->>>>>>> 93501d1069ecb00758137c19bb27a53ee097a0e4
 entry_type Dictionary::getType(int32_t id) const {
   assert(id >= 0);
   assert(id < size_);

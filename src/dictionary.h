@@ -72,15 +72,7 @@ class Dictionary {
   int32_t nwords() const;
   int32_t nlabels() const;
   int64_t ntokens() const;
-<<<<<<< HEAD
-  int32_t getId(const std::string_view) const;
   int32_t getId(const std::string_view, uint32_t h) const;
-||||||| 3697152
-  int32_t getId(const std::string&) const;
-  int32_t getId(const std::string&, uint32_t h) const;
-=======
-  int32_t getId(const std::string&, uint32_t h) const;
->>>>>>> 93501d1069ecb00758137c19bb27a53ee097a0e4
   entry_type getType(int32_t) const;
   entry_type getType(const std::string_view) const;
   bool discard(int32_t, real) const;
@@ -89,15 +81,7 @@ class Dictionary {
       const std::string&,
       std::vector<int32_t>&,
       std::vector<std::string>* substrings = nullptr) const;
-<<<<<<< HEAD
   uint32_t hash(const std::string_view str) const;
-  void add(const std::string&);
-||||||| 3697152
-  uint32_t hash(const std::string& str) const;
-  void add(const std::string&);
-=======
-  uint32_t hash(const std::string& str) const;
->>>>>>> 93501d1069ecb00758137c19bb27a53ee097a0e4
   bool readWord(std::istream&, std::string&) const;
   std::string getLabel(int32_t) const;
   void load(std::istream&);
