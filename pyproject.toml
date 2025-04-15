@@ -1,2 +1,14 @@
+<<<<<<< HEAD
 [build-system]
 requires = ["setuptools", "wheel", "pybind11"]
+||||||| 3697152
+=======
+# based on https://github.com/pybind/python_example/blob/master/pyproject.toml
+[build-system]
+requires = [
+    "setuptools>=42",
+    "pybind11>=2.10.0",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+>>>>>>> 93501d1069ecb00758137c19bb27a53ee097a0e4

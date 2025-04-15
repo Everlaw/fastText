@@ -25,8 +25,15 @@ class Vector;
 
 class DenseMatrix : public Matrix {
  protected:
+<<<<<<< HEAD
   intgemm::AlignedVector<real> data_;
   void uniformThread(real, int, int32_t);
+||||||| 3697152
+  std::vector<real> data_;
+  void uniformThread(real, int, int32_t);
+=======
+  std::vector<real> data_;
+>>>>>>> 93501d1069ecb00758137c19bb27a53ee097a0e4
 
  public:
   DenseMatrix();
@@ -59,23 +66,18 @@ class DenseMatrix : public Matrix {
   inline int64_t cols() const {
     return n_;
   }
-  void zero();
-  void uniform(real, unsigned int, int32_t);
-
-  void multiplyRow(const Vector& nums, int64_t ib = 0, int64_t ie = -1);
-  void divideRow(const Vector& denoms, int64_t ib = 0, int64_t ie = -1);
-
-  real l2NormRow(int64_t i) const;
-  void l2NormRow(Vector& norms) const;
 
   real dotRow(const Vector&, int64_t) const override;
-  void addVectorToRow(const Vector&, int64_t, real) override;
   void addRowToVector(Vector& x, int32_t i) const override;
   void addRowToVector(Vector& x, int32_t i, real a) const override;
+<<<<<<< HEAD
   void averageRowsToVector(Vector& x, const std::vector<int32_t>& rows) const override;
   void save(std::ostream&) const override;
+||||||| 3697152
+  void save(std::ostream&) const override;
+=======
+>>>>>>> 93501d1069ecb00758137c19bb27a53ee097a0e4
   void load(std::istream&) override;
-  void dump(std::ostream&) const override;
 
   class EncounteredNaNError : public std::runtime_error {
    public:
