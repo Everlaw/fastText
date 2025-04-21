@@ -9,7 +9,7 @@ jobs:
           - 3.12.6
     runs-on: [self-hosted, fasttext]
     steps:
-    - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
+    - uses: actions/checkout@85e6279cec87321a52edac9c87bce653a07cf6c2
     - name: Install Python
       run: |
         uv python install ${{ matrix.python-version }}
