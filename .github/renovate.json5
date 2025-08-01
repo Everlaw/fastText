@@ -5,5 +5,18 @@
     "schedule:weekly"
   ],
   "timezone": "America/Los_Angeles",
-  "includePaths": [".github/**"]
+  "includePaths": [".github/**"],
+  "packageRules": [
+    // Pin GitHub Actions to immutable SHAs.
+    {
+      matchDepTypes: ["action"],
+      pinDigests: true,
+    },
+    // Annotate GitHub Actions SHAs with a SemVer version.
+    {
+      extends: ["helpers:pinGitHubActionDigests"],
+      extractVersion: "^(?<version>v?\\d+\\.\\d+\\.\\d+)$",
+      versioning: "regex:^v?(?<major>\\d+)(\\.(?<minor>\\d+)\\.(?<patch>\\d+))?$",
+    },
+  ],
 }
