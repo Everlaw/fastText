@@ -22,7 +22,7 @@ jobs:
     - name: Build wheel
       run: |
         rm -rf dist
-        uv build --out-dir dist
+        uv build --python ${{ matrix.python-version }} --out-dir dist
     - name: Check wheel
       run: |
         # These requirements were lifted from `install_requires` in `setup.py`.
