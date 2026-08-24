@@ -5,7 +5,7 @@ set -euo pipefail
 wheel="$1"
 basename="$(basename "$wheel")"
 
-cosign sign-blob --key awskms:///arn:aws:kms:us-east-1:894611973686:alias/artifact-signing --signing-config /usr/local/etc/signing-config.json --bundle "$wheel.sig" $wheel
+cosign sign-blob --key awskms:///arn:aws:kms:us-east-1:894611973686:alias/artifact-signing --signing-config /usr/local/etc/cosign-signing-config.json --bundle "$wheel.sig" $wheel
 
 bucket="everlaw-artifacts"
 url="s3://$bucket/fasttext/$basename"
