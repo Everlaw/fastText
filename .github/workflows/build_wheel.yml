@@ -7,6 +7,7 @@ jobs:
       matrix:
         python-version:
           - 3.12.6
+          - 3.13.12
     runs-on: [self-hosted, fasttext]
     steps:
     - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
@@ -21,7 +22,7 @@ jobs:
     - name: Build wheel
       run: |
         rm -rf dist
-        uv build --out-dir dist
+        uv build --python ${{ matrix.python-version }} --out-dir dist
     - name: Check wheel
       run: |
         # These requirements were lifted from `install_requires` in `setup.py`.
